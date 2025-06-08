@@ -15,7 +15,7 @@ public partial class TripsDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Client> Clients { get; set; }
+    public virtual DbSet<Client?> Clients { get; set; }
 
     public virtual DbSet<ClientTrip> ClientTrips { get; set; }
 

@@ -18,7 +18,7 @@ public class TripsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetTripsPage([FromQuery]int pageNumber, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetTripsPage(CancellationToken cancellationToken, [FromQuery] int pageNumber = 1)
     {
         var tripPages = await _tripsService.GetTripsPageOrderByTripFromDescAsync(pageNumber, cancellationToken);
         return Ok(tripPages);

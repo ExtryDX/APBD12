@@ -25,8 +25,10 @@ public class TripsRepository : ITripsRepository
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<int> GetTripsCount()
+    public async Task<int> GetTripsCount(CancellationToken cancellationToken)
     {
-        return await _context.Trips.CountAsync();
+        return await _context.Trips.CountAsync(cancellationToken);
     }
+
+    
 }

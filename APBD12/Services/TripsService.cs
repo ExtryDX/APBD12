@@ -14,10 +14,10 @@ public class TripsService : ITripsService
         _tripsRepository = tripsRepository;
     }
     
-    public async Task<TripPage> GetTripsPageOrderByTripFromDescAsync(int pageNumber, CancellationToken cancellationToke) {
+    public async Task<TripPage> GetTripsPageOrderByTripFromDescAsync(int pageNumber, CancellationToken cancellationToken) {
         
-        var trips = await _tripsRepository.GetTripsPageOrderByTripFromDescAsync(pageNumber, cancellationToke);
-        var tripsCount = await _tripsRepository.GetTripsCount();
+        var trips = await _tripsRepository.GetTripsPageOrderByTripFromDescAsync(pageNumber, cancellationToken);
+        var tripsCount = await _tripsRepository.GetTripsCount(cancellationToken);
         var numberOfPages = (int)Math.Ceiling((double)trips.Count / PAGE_ENTRIES);
         
         var tripsPage = trips.Select(t => new TripDTO
@@ -45,6 +45,6 @@ public class TripsService : ITripsService
             allPages = numberOfPages,
             trips = tripsPage
         };
-
     }
+    
 }
